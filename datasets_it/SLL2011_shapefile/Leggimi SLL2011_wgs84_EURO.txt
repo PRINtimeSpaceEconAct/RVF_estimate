@@ -1,0 +1,20 @@
+﻿Il file contiene  i dati geografici (in formato shapefile) dei sistemi locali del lavoro 2011, così come definiti il 17/12/2014 in base al nuovo metodo denominato EURO. I dati sono disponibili nella proiezione geografica WGS84 UTM Zona 32N. Al fine di ridurre le dimensioni del file i limiti dei SLL 2011 sono stati opportunamente generalizzati.
+
+I dati contenuti nel file sono i seguenti:
+
+1. SLL_2011: codice del sistema locale del lavoro 2011. Il codice è ottenuto ordinando preliminarmente i SLL in ordine crescente secondo i codici di regione, provincia e comune che assegna il nome al SLL. Il codice identificativo si ottiene quindi come combinazione del codice della regione in cui ricade il comune che da il nome al SLL (campi 1-2) e di un codice progressivo all'interno della regione (campi 3-4).
+
+2. DEN_SLL_2011: denominazione del sistema locale del lavoro 2011. Il comune del SLL che presenta il numero massimo di posti di lavoro assegna il nome al SLL 2011.
+
+3. SLL_2011_T: codice del sistema locale del lavoro 2011 in formato alfanumerico. Il codice è ottenuto ordinando preliminarmente i SLL in ordine crescente secondo i codici di regione, provincia e comune che assegna il nome al SLL. Il codice identificativo si ottiene quindi come combinazione del codice della regione in cui ricade il comune che da il nome al SLL (campi 1-2) e di un codice progressivo all'interno della regione (campi 3-4).
+
+4. REG: Codice regione. I SLL sono attribuiti alla regione a cui appartiene il comune che dà il nome al SLL. 
+
+5. MULTI_REG: SLL che contiene comuni appartenenti a più regioni. Sono riportate il numero di regioni coinvolte.
+
+6. MULTI_PROV: SLL che contiene comuni appartenenti a più province. Sono riportate il numero di province coinvolte.
+
+7. N_COMUNI: Numero di comuni che compongono il SLL 2011
+
+8. POP_2011: Popolazione residente totale al XV Censimento della popolazione e delle abitazioni.
+
