@@ -17,7 +17,7 @@ registerDoMC(cores=10)
 
 
 #Functions
-source("RVF_besth_adaptive_bootstrap.R")
+source("lib/RVF_besth_adaptive_bootstrap.R")
 source("lib/estimationVectorField_best_h.R")
 source("lib/estimationVectorField_best_h_best_alpha.R")
 source("lib/bootstrapStandardErrorsAdaptive_RVF_parallel.R")
@@ -27,7 +27,7 @@ source("lib/normKernelBiv_vec.R")
 source("lib/epaKernelBiv_vec.R")
 source("lib/forward_estimation_RSS.R")
 
-source("plotEstimatedRVF.R")
+source("lib/plotEstimatedRVF.R")
 
 
 
