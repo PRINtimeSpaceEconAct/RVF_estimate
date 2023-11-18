@@ -14,7 +14,7 @@ dfForPicture <- function(df, years, fua){
                                                                            ifelse(name.com=="Roma", "Rome",name.com))))))))
     
     #Cities bigger that 100000 inhabitants
-    df <- df %>% mutate(citiesHighPop=if_else(pop>=20000, 1, 0))
+    df <- df %>% mutate(citiesHighPop=if_else(pop>=75000, 1, 0))
     
     #FUA as eurostat
     df <- df %>% left_join(fua, by=c("name.com"="NAME"))

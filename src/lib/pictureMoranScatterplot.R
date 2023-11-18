@@ -65,11 +65,11 @@ pictureMoranScatterplot <- function(dfPooled, df, year, shp_comm=NA, shp_sll=NA,
     }
     
 
-    qq <- quantile(dfPooled$x, seq(0, 1, by=0.1))
+    qq <- quantile(dfPooled$x, seq(0, 1, by=0.2))
 
     # tm_obj <- tm_shape(shp_comm) + tm_fill("x", title="Population density (log)", breaks=qq, palette ="YlGn", midpoint = NA) + tm_layout(frame = FALSE) + tm_borders("white", alpha=0) + tm_shape(shp_sll) + tm_borders("black", alpha=1, lwd=0.5)
 
-    tm_obj <- tm_shape(shp_comm) + tm_fill("x", title="Population density (log)", breaks=qq, palette ="Greys", midpoint = NA) + tm_layout(frame = FALSE) + tm_borders("white", alpha=0) + tm_shape(cities) +  tm_dots(size = 0.05, col="yellow")   + tm_shape(shp_sll) + tm_borders("black", alpha=1, lwd=0.5)
+    tm_obj <- tm_shape(shp_comm) + tm_fill("x", title="Population density (log)", breaks=qq, palette ="YlGn", midpoint = NA) + tm_layout(frame = FALSE) + tm_borders("white", alpha=0) + tm_shape(cities) +  tm_dots(size = 0.05, col="red")   + tm_shape(shp_sll) + tm_borders("black", alpha=1, lwd=0.5)
     
     dev.new()
       tm_obj

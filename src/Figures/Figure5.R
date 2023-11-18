@@ -231,12 +231,13 @@ points(centerSAx,centerSAWx,cex=5,col="yellow",lwd=5)
 points(centerRx,centerRWx,cex=5,col="forestgreen",lwd=5)
 
 # Figure 5 (b) ----
+library(dplyr)
 library(tmap)
 library(rgdal)
 load("../datasets_it/W_SLL_2001_2011_2019.RData")
 shp_SLL_2011 <- readOGR("../datasets_it/SLL2011_shapefile/SLL2011_wgs84_EURO.shp")
 shp_com = shp_comm_2019
-shp_com@data = shp_com@data %>% left_join(df,by=c("PRO_COM"="geo"))
+shp_com@data = shp_com@data %>% dplyr::left_join(df,by=c("PRO_COM"="geo"))
 
 
 tm_obj <- tm_shape(shp_com) + tm_fill("rgbCol", title="", labels=c("Rural","Suburban","Urban"), palette=c("forestgreen","yellow","red")) + tm_shape(shp_com) + tm_fill("rgbCol", title="") + tm_layout(frame = FALSE) + tm_borders("white", alpha=0) + tm_shape(shp_SLL_2011) + tm_borders("black", alpha=1, lwd=0.5)
