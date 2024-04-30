@@ -23,7 +23,7 @@ pictureMoranScatterplot <- function(dfPooled, df, year, shp_comm=NA, shp_sll=NA,
 
   if (scatterPlot==TRUE){
     dev.new()
-  plot(df$x, df$wx, xlab= "Population density (log)", ylab = "spatially lagged (LLA) population density (log)", main=title,  cex=df$log.Pop.b, xlim=c(0, 10), ylim=c(0,10), bg=24,  lwd=.4,  pch=19, col=df$cols)
+  plot(df$x, df$wx, xlab= "Population density (log)", ylab = "spatially lagged (LMA) population density (log)", main=title,  cex=df$log.Pop.b, xlim=c(0, 10), ylim=c(0,10), bg=24,  lwd=.4,  pch=19, col=df$cols)
   points(df$x[df$cities==1], df$wx[df$cities==1], col="#FFFF00", pch=19, cex=1)
   points(df$x[df$cities==1], df$wx[df$cities==1], col="black", pch=21, cex=1)
   abline(h = mean(dfPooled$wx), lty = 2)
@@ -76,7 +76,7 @@ pictureMoranScatterplot <- function(dfPooled, df, year, shp_comm=NA, shp_sll=NA,
     tmap_save(tm = tm_obj,  filename = paste("map_popDensSLL_", year, ".pdf", sep=""))
     
     # qq <- quantile(dfPooled$wx, seq(0, 1, by=0.1))
-    # tm_obj <- tm_shape(shp_comm) + tm_fill("wx", title="Spatially lagged (LLA) population denstiy (log)", breaks=qq, palette ="YlGn", midpoint = NA) + tm_layout(frame = FALSE) + tm_borders("white", alpha=0) + tm_shape(shp_comm_cities) + tm_fill("cities", palette=c("#FFFF00"), colorNA = "transparent",legend.show=FALSE) + tm_shape(shp_sll) + tm_borders("black", alpha=1, lwd=0.5) #+ tm_layout(legend.show=TRUE)
+    # tm_obj <- tm_shape(shp_comm) + tm_fill("wx", title="Spatially lagged (LMA) population denstiy (log)", breaks=qq, palette ="YlGn", midpoint = NA) + tm_layout(frame = FALSE) + tm_borders("white", alpha=0) + tm_shape(shp_comm_cities) + tm_fill("cities", palette=c("#FFFF00"), colorNA = "transparent",legend.show=FALSE) + tm_shape(shp_sll) + tm_borders("black", alpha=1, lwd=0.5) #+ tm_layout(legend.show=TRUE)
     # 
     # dev.new()
     # tm_obj

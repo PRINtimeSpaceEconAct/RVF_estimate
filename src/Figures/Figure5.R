@@ -203,7 +203,7 @@ arrowAngles[arrowAngles == "NaN"] <- NA
 sdArrowAngles = apply(arrowAngles, MARGIN=1, FUN=sd, na.rm=T)
 
 # standard deviation of angles
-image(x=randomVectorField_estimation$grid_y_Rel, y=randomVectorField_estimation$grid_Wy_Rel, z=matrix(sdArrowAngles, ncol=randomVectorField_estimation$numGrid, nrow=randomVectorField_estimation$numGrid,byrow=TRUE),xlab="Population density (log)",ylab="Spatially lagged (LLA) population density (log)",col=hcl.colors(1000,"Blues",rev=TRUE), ylim=c(min(randomVectorField_estimation$grid_Wy_Rel),max(randomVectorField_estimation$grid_Wy_Rel)), xlim=c(min(randomVectorField_estimation$grid_y_Rel),max(randomVectorField_estimation$grid_y_Rel)))
+image(x=randomVectorField_estimation$grid_y_Rel, y=randomVectorField_estimation$grid_Wy_Rel, z=matrix(sdArrowAngles, ncol=randomVectorField_estimation$numGrid, nrow=randomVectorField_estimation$numGrid,byrow=TRUE),xlab="Population density (log)",ylab="Spatially lagged (LMA) population density (log)",col=hcl.colors(1000,"Blues",rev=TRUE), ylim=c(min(randomVectorField_estimation$grid_Wy_Rel),max(randomVectorField_estimation$grid_Wy_Rel)), xlim=c(min(randomVectorField_estimation$grid_y_Rel),max(randomVectorField_estimation$grid_y_Rel)))
 
 #Observations in the moran space
 points(df$xFut,df$wxFut,cex=0.25,pch=19,col=df$rgbCol)
@@ -229,6 +229,8 @@ for (j in 1: nrow(randomVectorField_estimation$evalPoints_Stack)){
 points(centerUx,centerUWx,cex=5,col="red",lwd=5)
 points(centerSAx,centerSAWx,cex=5,col="yellow",lwd=5)
 points(centerRx,centerRWx,cex=5,col="forestgreen",lwd=5)
+
+# dev.copy2eps(file="RVFAttractorsFuzzy.eps")
 
 # Figure 5 (b) ----
 library(dplyr)

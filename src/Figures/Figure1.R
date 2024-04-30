@@ -26,9 +26,10 @@ registerDoMC(cores=6)
 library(expm)
 library(data.table)
 
-source("lib/chang")
+source("lib/changeIstatCodes_adjustOverTime.R")
 source("lib/pictureMoranScatterplot.R")
 source("lib/changeIstatCodes_adjustOverTime.R")
+source("lib/dfForPicture.R")
 
 load("../datasets_it/data_x_wx_allYears.RData")
 load("../datasets_it/W_SLL_2001_2011_2019.RData")

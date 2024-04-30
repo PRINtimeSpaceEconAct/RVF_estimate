@@ -43,7 +43,7 @@ plotEstimatedRVF <- function(df, estimationRVF, bootstrapAnalysis=NA, lenghtArro
         
         #dev.new()
         # standard deviation of angles
-        image(x=randomVectorField_estimation$grid_y_Rel, y=randomVectorField_estimation$grid_Wy_Rel, z=matrix(sdArrowAngles, ncol=randomVectorField_estimation$numGrid, nrow=randomVectorField_estimation$numGrid,byrow=TRUE),xlab="Population density (log)",ylab="Spatially lagged (LLA) population density (log)",col=hcl.colors(1000,"Blues",rev=TRUE), ylim=c(min(randomVectorField_estimation$grid_Wy_Rel),max(randomVectorField_estimation$grid_Wy_Rel)), xlim=c(min(randomVectorField_estimation$grid_y_Rel),max(randomVectorField_estimation$grid_y_Rel)))
+        image(x=randomVectorField_estimation$grid_y_Rel, y=randomVectorField_estimation$grid_Wy_Rel, z=matrix(sdArrowAngles, ncol=randomVectorField_estimation$numGrid, nrow=randomVectorField_estimation$numGrid,byrow=TRUE),xlab="Population density (log)",ylab="Spatially lagged (LMA) population density (log)",col=hcl.colors(1000,"Blues",rev=TRUE), ylim=c(min(randomVectorField_estimation$grid_Wy_Rel),max(randomVectorField_estimation$grid_Wy_Rel)), xlim=c(min(randomVectorField_estimation$grid_y_Rel),max(randomVectorField_estimation$grid_y_Rel)))
         
         #Observations in the moran space
         points(randomVectorField_estimation$y_Rel[,1],randomVectorField_estimation$Wy_Rel[,1],cex=0.25,pch=19,col="yellow")

@@ -55,3 +55,5 @@ load(paste("../datasets_it/bootstrapAnalysis",f_name,".RData",sep=""))
 # plot estimated RVF
 dev.new()
 plotEstimatedRVF(estimationRVF=randomVectorField_estimation_viaRSS$estimationRVF,df=df,lenghtArrows = 0.2,bootstrapAnalysis=bootstrapAnalysis,df_all = df_allYears)
+
+# dev.copy2pdf(file="RVF_1984-2019.pdf")
