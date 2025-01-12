@@ -1,5 +1,5 @@
 bootstrapStandardErrorsAdaptive_RVF_parallel <- function(stacked_expected_Delta_y, stacked_expected_Delta_Wy, estimationRVFList, optimalBandwith=c(1.77*nrow(estimationRVFList[[1]]$estimationRVF$y_Rel)^(-1/6),1.77*nrow(estimationRVFList[[1]]$estimationRVF$y_Rel)^(-1/6)), nboot=100,
- weiNorm=rep(1/length(estimationRVFList[[1]]$estimationRVF$y_Rel),length(estimationRVFList[[1]]$estimationRVF$y_Rel)), alpha=0.5){
+ weiNorm=rep(1/length(estimationRVFList[[1]]$estimationRVF$y_Rel),length(estimationRVFList[[1]]$estimationRVF$y_Rel)), alpha=0.5,adaptive=TRUE){
 
   ###############################################
   # Code for "Spatial Clubs in European Regions #
@@ -81,7 +81,8 @@ bootstrapStandardErrorsAdaptive_RVF_parallel <- function(stacked_expected_Delta_
 	                                                    figure =FALSE, 
 	                                                    h.bandwidth=optimalBandwith,
 	                                                    alpha=alpha,
-	                                                    weiNorm=weiNorm)
+	                                                    weiNorm=weiNorm,
+	                                                    adaptive=adaptive)
 	    
 	    # #Stacked actual and future observations
 	    # futObs_y_Rel <- c(y_Rel[,(1+numLag):ncol(y_Rel)])

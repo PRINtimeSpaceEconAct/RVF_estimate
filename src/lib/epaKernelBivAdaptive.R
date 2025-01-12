@@ -3,7 +3,8 @@ epaKernelBivAdaptive <- function(evalPoints_Stack,x,
                                  detS=det(cov(x)),
                                  weiNorm=rep(1/nrow(x),nrow(x)),
                                  alpha=0.5, ngrid,
-                                 h.bandwidth=c(1.77*nrow(x)^(-1/6),1.77*nrow(x)^(-1/6))){
+                                 h.bandwidth=c(1.77*nrow(x)^(-1/6),1.77*nrow(x)^(-1/6)),
+                                 adaptive=TRUE){
     
     ###################################
     ## Calculation of lambdas from the density pilot
@@ -18,14 +19,17 @@ epaKernelBivAdaptive <- function(evalPoints_Stack,x,
     # }
     # close(pb)
     
-    print("Start pilot estimate")
-    densityPilot <- normKernelBiv_vec(y=x,x=x,invS=invS,detS=detS,
-                                  weiNorm=weiNorm,lambdas=rep(1,dim(x)[1]))
-    print("end estimate pilot")
-    
-    # correct 
-    lambdas <- (densityPilot/exp(sum(weiNorm*log(densityPilot))))^(-alpha)
-    
+    if (adaptive==TRUE){
+        print("Start pilot estimate")
+        densityPilot <- normKernelBiv_vec(y=x,x=x,invS=invS,detS=detS,
+                                          weiNorm=weiNorm,lambdas=rep(1,dim(x)[1]))
+        print("end estimate pilot")
+        
+        # correct 
+        lambdas <- (densityPilot/exp(sum(weiNorm*log(densityPilot))))^(-alpha)
+    }else{
+        lambdas <- rep(1,dim(x)[1])
+    }
     
     print("Start estimate of the stochastic kernel")
     estimateDensity_Stack <- epaKernelBiv_vec(y=evalPoints_Stack,x=x,

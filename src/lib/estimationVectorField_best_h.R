@@ -2,7 +2,7 @@ estimationVectorField_best_h <- function(numGrid, grid_y_Rel, grid_Wy_Rel, y_Rel
                                          Wy_Rel, W,numLag,numGrid.h, nrepsimPar=100,
                                          min.size.drawnPar=1,
                                          weiNorm=rep(1/length(y_Rel),length(y_Rel)),
-                                         continuousForward=FALSE){
+                                         continuousForward=FALSE,adaptive=TRUE){
     
     
     #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
@@ -98,7 +98,8 @@ estimationVectorField_best_h <- function(numGrid, grid_y_Rel, grid_Wy_Rel, y_Rel
                                                         numLag=numLag, 
                                                         figure =FALSE, 
                                                         h.bandwidth=hGrid[i,], 
-                                                        weiNorm=weiNorm)
+                                                        weiNorm=weiNorm,
+                                                        adaptive=adaptive)
         
         # new method based directly on mean of arrows
         simulation_RSS <- forward_estimation_RSS(estimationRVF,
@@ -125,7 +126,8 @@ estimationVectorField_best_h <- function(numGrid, grid_y_Rel, grid_Wy_Rel, y_Rel
                                                     Wy_Rel=Wy_Rel, numLag=numLag, 
                                                     figure =FALSE, 
                                                     h.bandwidth=hOpt,
-                                                    weiNorm=weiNorm)
+                                                    weiNorm=weiNorm,
+                                                    adaptive=adaptive)
 
     
     # redo prediction with optimal h and adaptive estimation

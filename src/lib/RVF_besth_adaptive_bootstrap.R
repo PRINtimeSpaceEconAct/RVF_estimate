@@ -5,7 +5,8 @@ RVF_besth_adaptive_bootstrap <- function(df, numGrid=50, numGrid.h=10,
                                          numGrid.alpha=10, title="",
                                          nboot=100, pValue=0.05, figure=FALSE, 
                                          weiNorm=rep(1/nrow(df),nrow(df)),
-                                         bestAlpha=FALSE,continuousForward=FALSE){
+                                         bestAlpha=FALSE,continuousForward=FALSE,
+                                         adaptive=TRUE){
     
     
     
@@ -20,7 +21,7 @@ RVF_besth_adaptive_bootstrap <- function(df, numGrid=50, numGrid.h=10,
     #*******************#
     # Estimation best h #
     #*******************#
-    if (bestAlpha==TRUE){
+    if (bestAlpha==TRUE & adaptive==TRUE){
       print("Choosing best h and alpha")
       randomVectorField_estimation_viaRSS <- estimationVectorField_best_h_best_alpha(
                                             numGrid=numGrid, 
@@ -46,11 +47,12 @@ RVF_besth_adaptive_bootstrap <- function(df, numGrid=50, numGrid.h=10,
                                             nrepsimPar=100, 
                                             min.size.drawnPar=1,
                                             weiNorm=weiNorm,
-                                            continuousForward=continuousForward)
+                                            continuousForward=continuousForward,
+                                            adaptive=adaptive)
     }
     
     save(randomVectorField_estimation_viaRSS,
-         file=paste("randomVectorField_estimation_viaRSS_alphaOpt_",bestAlpha, 
+         file=paste("randomVectorField_estimation_viaRSS_alphaOpt_",bestAlpha,"_adaptive",adaptive, 
                     title, ".RData",sep=""))
     
     #***********#
@@ -65,7 +67,8 @@ RVF_besth_adaptive_bootstrap <- function(df, numGrid=50, numGrid.h=10,
       stacked_expected_Delta_y=randomVectorField_estimation$stacked_expected_Delta_y,
       stacked_expected_Delta_Wy=randomVectorField_estimation$stacked_expected_Delta_Wy,
       estimationRVFList,optimalBandwith=randomVectorField_estimation_viaRSS$hOpt,
-        nboot=nboot, weiNorm=weiNorm, alpha=randomVectorField_estimation_viaRSS$alphaOpt)
+        nboot=nboot, weiNorm=weiNorm, alpha=randomVectorField_estimation_viaRSS$alphaOpt,
+      adaptive=adaptive)
     
     save(bootstrapAnalysis, 
          file=paste("bootstrapAnalysis", title, ".RData", sep=""))

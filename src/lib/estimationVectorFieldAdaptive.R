@@ -2,7 +2,8 @@ estimationVectorFieldAdaptive <- function(numGrid,
                                 grid_y_Rel, grid_Wy_Rel, y_Rel, Wy_Rel= Wy_Rel, 
                                 numLag, figure=TRUE,alpha=0.5,
                                 h.bandwidth=c(1.77*length(y_Rel)^(-1/6),1.77*length(y_Rel)^(-1/6)),
-                                weiNorm=rep(1/length(y_Rel),length(y_Rel))){
+                                weiNorm=rep(1/length(y_Rel),length(y_Rel)),
+                                adaptive=TRUE){
 
   
   
@@ -60,7 +61,7 @@ estimationVectorFieldAdaptive <- function(numGrid,
 	#Determinant of covariance matrix
 	detS <- det(cov(x))
 	
-	estimateDensity_Stack <- epaKernelBivAdaptive(evalPoints_Stack=evalPoints_Stack,x=x,invS=invS,detS=detS,ngrid= numGrid, h.bandwidth=h.bandwidth, alpha=alpha, weiNorm=weiNorm)  
+	estimateDensity_Stack <- epaKernelBivAdaptive(evalPoints_Stack=evalPoints_Stack,x=x,invS=invS,detS=detS,ngrid= numGrid, h.bandwidth=h.bandwidth, alpha=alpha, weiNorm=weiNorm,adaptive=adaptive)  
 	
 	#################################################
 	#Estimate directions for each point in the grid #
