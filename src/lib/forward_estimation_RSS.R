@@ -105,8 +105,5 @@ forwardEstimationContinuousInterpolation <- function(estimationRVF,distributionF
     RSS = sum(weiNorm*rowNorms(obs_fut - obs_pred))
     return(list(RSS=RSS,RSSall=RSSall,obs_pred=obs_pred))
     
-    # distributionPredDensity <- rowSums(epaKernelBivAdaptive(evalPoints,obs_pred))
-    # Area = dyGrid*dWyGrid
-    # RSS = 1 - (1/Area)*sum(sqrt(distributionPredDensity*distributionFutDensity))
-    # return(list(RSS=RSS,obs_pred=obs_pred))
+    
 }

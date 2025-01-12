@@ -84,50 +84,7 @@ bootstrapStandardErrorsAdaptive_RVF_parallel <- function(stacked_expected_Delta_
 	                                                    weiNorm=weiNorm,
 	                                                    adaptive=adaptive)
 	    
-	    # #Stacked actual and future observations
-	    # futObs_y_Rel <- c(y_Rel[,(1+numLag):ncol(y_Rel)])
-	    # actObs_y_Rel <- c(y_Rel[,1:(ncol(y_Rel)-numLag)])	
-	    # futObs_Wy_Rel <- c(Wy_Rel[,(1+numLag):ncol(Wy_Rel)])
-	    # actObs_Wy_Rel <- c(Wy_Rel[,1:(ncol(Wy_Rel)-numLag)])
-	    # 
-	    # #Matrix of observations
-	    # x <- cbind(actObs_y_Rel,actObs_Wy_Rel)
-	    # #Bootstrap sample		  
-	    # x_boot <-  x[uuu,]
-	    # weiNorm_boot <- weiNorm[uuu]
-	    # weiNorm_boot <- weiNorm_boot/sum(weiNorm_boot)
-	    # 
-	    # #Bootstrap of Delta y and Delta Wy
-	    # delta_y_Rel_boot <- estimationRVFList[[i]]$estimationRVF$delta_y_Rel[uuu]
-	    # delta_Wy_Rel_boot <- estimationRVFList[[i]]$estimationRVF$delta_Wy_Rel[uuu]
-	    # 
-	    # #Determinant of covariance matrix
-	    # detS_boot <- det(cov(x_boot))	  
-	    # if (abs(detS_boot) < 1e-8){ break }
-	    # 
-	    # #Inverse of covariance matrix
-	    # invS_boot <- solve(cov(x_boot))
-	    # #h.bandwidth
-	    # h.bandwidth.par <- optimalBandwith
-	    # 
-	    # estimateDensity_Stack_boot <- epaKernelBivAdaptive(evalPoints_Stack=evalPoints_Stack,x= x_boot,invS= invS_boot,detS= detS_boot, ngrid=numGrid, h.bandwidth=h.bandwidth.par, weiNorm=weiNorm_boot, alpha=alpha)
-	    # # estimateDensity_Stack_boot <- matrix(0,nrow=nrow(x_boot),ncol=(numGrid*numGrid))
-	    # 
-	    # 
-	    # #Matrix of variation of y and Wy
-	    # delta_y_Rel_matrix_boot <- matrix(delta_y_Rel_boot,nrow=length(estimationRVFList[[i]]$estimationRVF$delta_y_Rel),ncol=ncol(estimationRVFList[[i]]$estimationRVF$estimateDensity_Stack))
-	    # 
-	    # delta_Wy_Rel_matrix_boot <- matrix(delta_Wy_Rel_boot,nrow=length(estimationRVFList[[i]]$estimationRVF$delta_y_Rel),ncol=ncol(estimationRVFList[[i]]$estimationRVF$estimateDensity_Stack))
-	    # 
-	    # 
-	    # #Normalizing weights for local mean estimator (see Bowman and Azzalini, p. 49, 1997)
-	    # normWeights <- colSums(estimateDensity_Stack_boot)
-	    # 
-	    # #Check for zero weights (0/1=0, instead of 0/0 that is indeterminate but it should be zero)
-	    # normWeights[normWeights==0] <-1
-	    # stacked_expected_Delta_y_boot[,i] <- colSums(delta_y_Rel_matrix_boot*estimateDensity_Stack_boot)/normWeights
-	    # stacked_expected_Delta_Wy_boot[,i] <- colSums(delta_Wy_Rel_matrix_boot* estimateDensity_Stack_boot)/normWeights
-	    	  	  
+	   	  	  
 	  }
 	  c(as.vector(estimationRVF_boot$stacked_expected_Delta_y),as.vector(estimationRVF_boot$stacked_expected_Delta_Wy))
 	}

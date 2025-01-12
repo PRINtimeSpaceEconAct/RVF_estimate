@@ -44,7 +44,7 @@ f_name = "1985-2020_GHSL"
 RVF <- RVF_besth_adaptive_bootstrap(df=df, numGrid=50, numGrid.h=10,
                                     numGrid.alpha=10, title=f_name,
                                     nboot=100, pValue=0.05, figure=FALSE,
-                                    bestAlpha=TRUE,continuousForward = TRUE)
+                                    bestAlpha=TRUE,continuousForward = TRUE,adaptive=FALSE)
 save(df,RVF,file=paste("RVF_",f_name,".RData",sep=""))
 
 # load precomputed estimates

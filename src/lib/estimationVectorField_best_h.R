@@ -83,7 +83,8 @@ estimationVectorField_best_h <- function(numGrid, grid_y_Rel, grid_Wy_Rel, y_Rel
     
     
     # compute density estimation for future observation
-    distributionFutDensity <- rowSums(epaKernelBivAdaptive(evalPoints_Stack,cbind(futObs_y_Rel,futObs_Wy_Rel)))
+    distributionFutDensity <- rowSums(epaKernelBivAdaptive(evalPoints_Stack,
+                           cbind(futObs_y_Rel,futObs_Wy_Rel),adaptive=adaptive))
     
     RSS_for_best_h <- foreach(i=1:(numGrid.h), .combine= cbind, .verbose=FALSE) %dopar%{
         
@@ -100,11 +101,12 @@ estimationVectorField_best_h <- function(numGrid, grid_y_Rel, grid_Wy_Rel, y_Rel
                                                         h.bandwidth=hGrid[i,], 
                                                         weiNorm=weiNorm,
                                                         adaptive=adaptive)
-        
+        gc()
         # new method based directly on mean of arrows
         simulation_RSS <- forward_estimation_RSS(estimationRVF,
                                                  continuousForward=continuousForward,
-                                                 distributionFutDensity=distributionFutDensity)
+                                                 distributionFutDensity=distributionFutDensity,
+                                                 adaptive=adaptive)
         
         # RSS_for_best_h[i] <- simulation_RSS$RSS 		
         return(simulation_RSS$RSS)
